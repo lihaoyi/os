@@ -8,7 +8,8 @@ object WatchTests extends TestSuite{
       val changedPaths = collection.mutable.Set.empty[os.Path]
       _root_.os.watch.watch(
         Seq(wd),
-        onEvent = _.foreach(changedPaths.add)
+        onEvent = _.foreach(changedPaths.add),
+        config = os.watch.WatchConfig(preferNative = true)
 //        (s, v) => println(s + " " + v)
       )
 
